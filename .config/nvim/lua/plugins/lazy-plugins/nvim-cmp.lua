@@ -59,8 +59,8 @@ return { -- Autocompletion
 				["<C-p>"] = cmp.mapping.select_prev_item(),
 
 				-- Scroll the documentation window [b]ack / [f]orward
-				["<C-b>"] = cmp.mapping.scroll_docs(-4),
-				["<C-f>"] = cmp.mapping.scroll_docs(4),
+				-- ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+				-- ["<C-f>"] = cmp.mapping.scroll_docs(4),
 
 				-- Accept ([y]es) the completion.
 				--  This will auto-import if your LSP supports it.
@@ -70,7 +70,7 @@ return { -- Autocompletion
 				-- Manually trigger a completion from nvim-cmp.
 				--  Generally you don't need this, because nvim-cmp will display
 				--  completions whenever it has completion options available.
-				["<C-Space>"] = cmp.mapping.complete({}),
+				["<C-h>"] = cmp.mapping.complete({}),
 
 				-- Think of <c-l> as moving to the right of your snippet expansion.
 				--  So if you have a snippet that's like:
@@ -85,11 +85,11 @@ return { -- Autocompletion
 						luasnip.expand_or_jump()
 					end
 				end, { "i", "s" }),
-				["<C-h>"] = cmp.mapping(function()
-					if luasnip.locally_jumpable(-1) then
-						luasnip.jump(-1)
-					end
-				end, { "i", "s" }),
+				-- ["<C-h>"] = cmp.mapping(function()
+				-- 	if luasnip.locally_jumpable(-1) then
+				-- 		luasnip.jump(-1)
+				-- 	end
+				-- end, { "i", "s" }),
 
 				-- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
 				--    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps

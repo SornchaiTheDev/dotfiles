@@ -78,6 +78,8 @@ return { -- Fuzzy Finder (files, lsp, etc)
 					"!**/.git/*",
 					"-g",
 					"!node_modules/*",
+					"-g",
+					"!.next/*",
 				},
 			})
 		end, { desc = "[S]earch [F]iles" })

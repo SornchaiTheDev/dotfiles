@@ -12,7 +12,7 @@ return { -- Autoformat
 		},
 	},
 	opts = function()
-		local web_dev = { { "prettierd", "prettier" } }
+		local web_dev = { "prettierd", "prettier" }
 		return {
 			notify_on_error = false,
 			-- format_on_save = function(bufnr)

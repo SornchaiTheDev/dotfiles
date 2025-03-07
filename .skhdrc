@@ -13,7 +13,7 @@ alt - f : yabai -m window --toggle zoom-fullscreen
 # toggle window split type
 alt - e : yabai -m window --toggle split
 
-alt - w : open -a "WezTerm"
+alt - g : open -a "Ghostty"
 alt - a : open -a "Arc"
 
 # Focus window

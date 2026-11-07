@@ -1,0 +1,39 @@
+/* ReGreet styling (GTK4 CSS). Inspect widgets with: GTK_DEBUG=interactive regreet --demo */
+window {
+    background-color: #11111b;
+    color: #cdd6f4;
+}
+
+/* The login card */
+frame, .background > box > frame {
+    background-color: rgba(30, 30, 46, 0.92);
+    border: 1px solid #313244;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+label { color: #cdd6f4; }
+
+entry, combobox button, dropdown button {
+    background-color: #181825;
+    color: #cdd6f4;
+    border: 1px solid #313244;
+    border-radius: 10px;
+    min-height: 36px;
+}
+entry:focus-within { border-color: #89b4fa; }
+
+button {
+    background-color: #313244;
+    color: #cdd6f4;
+    border-radius: 10px;
+    border: none;
+    padding: 6px 14px;
+}
+button:hover { background-color: #45475a; }
+button.suggested-action { background-color: #89b4fa; color: #11111b; font-weight: 600; }
+button.destructive-action { background-color: #f38ba8; color: #11111b; }
+
+/* Clock in the top bar */
+.clock, #clock { font-size: 20px; font-weight: 600; color: #89b4fa; }

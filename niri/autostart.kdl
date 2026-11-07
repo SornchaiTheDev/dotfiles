@@ -1,0 +1,14 @@
+// Programs started with the niri session.
+
+// spawn-at-startup "waybar"   // replaced by quickshell (~/.config/quickshell)
+spawn-at-startup "qs"
+spawn-at-startup "swaync"
+spawn-at-startup "vicinae" "server"
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+spawn-at-startup "nm-applet" "--indicator"
+
+// Wallpaper: set one with  ~/.config/niri/scripts/wallpaper.sh /path/to/image
+spawn-sh-at-startup "awww-daemon & sleep 0.5; ~/.config/niri/scripts/wallpaper.sh --restore"
+
+// Idle: lock at 5 min, screens off at 10 min, lock before suspend
+spawn-sh-at-startup "swayidle -w timeout 300 'swaylock -f' timeout 600 'niri msg action power-off-monitors' before-sleep 'swaylock -f' lock 'swaylock -f'"

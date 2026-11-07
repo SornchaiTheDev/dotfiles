@@ -1,0 +1,129 @@
+// niri config — https://yalter.github.io/niri/Configuration:-Introduction
+// Split into files; edit the one you need:
+//   binds.kdl      keybindings
+//   rules.kdl      window / layer rules
+//   autostart.kdl  programs started with the session
+// Previous (DMS) config is backed up in ~/.config/niri.bak-dms-2026-11-07
+// Validate after editing:  niri validate
+
+// ───────────── Input ─────────────
+input {
+    keyboard {
+        xkb {
+            layout "us,th"
+            options "grp:caps_toggle"
+        }
+        numlock
+    }
+
+    touchpad {
+        tap
+        dwt
+        natural-scroll
+        accel-speed 0.2
+        scroll-factor 0.32
+    }
+
+    mouse {
+        // accel-profile "flat"
+    }
+
+    // focus-follows-mouse max-scroll-amount="0%"
+}
+
+// ───────────── Outputs ─────────────
+// List names/modes with: niri msg outputs
+output "DP-1" {
+    position x=0 y=0
+}
+
+output "HDMI-A-1" {
+    position x=760 y=360
+}
+
+output "eDP-1" {
+    transform "normal"
+    position x=952 y=1440
+}
+
+// ───────────── Look & layout ─────────────
+cursor {
+    xcursor-theme "default"
+    xcursor-size 24
+    hide-when-typing
+}
+
+layout {
+    gaps 8
+    center-focused-column "never"
+    background-color "#11111b"
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+    default-column-width { proportion 0.5; }
+
+    focus-ring {
+        width 2
+        active-color "#89b4fa"
+        inactive-color "#45475a"
+        urgent-color "#f38ba8"
+    }
+
+    border {
+        off
+    }
+
+    shadow {
+        on
+        softness 30
+        spread 5
+        offset x=0 y=5
+        color "#00000070"
+    }
+
+    tab-indicator {
+        active-color "#89b4fa"
+        inactive-color "#45475a"
+        urgent-color "#f38ba8"
+    }
+
+    insert-hint {
+        color "#89b4fa80"
+    }
+}
+
+overview {
+    backdrop-color "#11111b"
+}
+
+recent-windows {
+    highlight {
+        corner-radius 12
+        active-color "#89b4fa"
+        urgent-color "#f38ba8"
+    }
+}
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+prefer-no-csd
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+animations {
+    // slowdown 1.0
+}
+
+// vicinae: lets it take focus when activated from the launcher
+debug {
+    honor-xdg-activation-with-invalid-serial
+}
+
+include "autostart.kdl"
+include "rules.kdl"
+include "binds.kdl"

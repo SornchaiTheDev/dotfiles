@@ -1,0 +1,23 @@
+# ReGreet config — https://github.com/rharish101/ReGreet
+# Styling lives in /etc/greetd/regreet.css (GTK4 CSS).
+
+[background]
+# Drop an image here to use it as the login background:
+# path = "/usr/share/backgrounds/greeter.jpg"
+fit = "Cover"
+
+[GTK]
+application_prefer_dark_theme = true
+font_name = "Inter Variable 13"
+
+[commands]
+reboot = ["systemctl", "reboot"]
+poweroff = ["systemctl", "poweroff"]
+
+[appearance]
+greeting_msg = "Welcome back"
+
+[widget.clock]
+format = "%A, %d %B   %H:%M"
+resolution = "500ms"
+label_width = 320

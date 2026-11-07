@@ -1,0 +1,45 @@
+// Window and layer rules.
+
+// Rounded corners everywhere
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+window-rule {
+    match app-id="com.mitchellh.ghostty"
+    draw-border-with-background false
+}
+
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id=r#"zen"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+// Small utility dialogs float
+window-rule {
+    match app-id=r#"^org\.pulseaudio\.pavucontrol$"#
+    match app-id=r#"^nm-connection-editor$"#
+    match app-id=r#"^org\.gnome\.Nautilus$"# title=r#"^(Open|Save).*"#
+    open-floating true
+}
+
+// Mini Motorways: always open fullscreen on the Haier TV
+window-rule {
+    match app-id="steam_app_1127500"
+    open-on-output "HDMI-A-1"
+    open-fullscreen true
+}
+
+// Hide password managers from screen capture
+/-window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    block-out-from "screen-capture"
+}
+
+// Notifications should not appear in screencasts
+layer-rule {
+    match namespace="^swaync-notification-window$"
+    block-out-from "screencast"
+}

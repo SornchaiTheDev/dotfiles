@@ -1,0 +1,10 @@
+# Whitelist: ignore everything in ~/.config except the desktop configs below.
+/*
+!/.gitignore
+!/README.md
+!/quickshell/
+!/niri/
+!/waybar/
+
+# niri's automatic config backups
+/niri/*.backup*

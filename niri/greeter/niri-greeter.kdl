@@ -1,0 +1,48 @@
+// Minimal niri session that only runs ReGreet (used by greetd).
+input {
+    keyboard {
+        xkb {
+            layout "us,th"
+            options "grp:caps_toggle"
+        }
+        numlock
+    }
+    touchpad {
+        tap
+        natural-scroll
+    }
+}
+
+output "DP-1" {
+    position x=0 y=0
+}
+output "HDMI-A-1" {
+    position x=760 y=360
+}
+output "eDP-1" {
+    position x=952 y=1440
+}
+
+cursor {
+    xcursor-size 24
+}
+
+layout {
+    background-color "#11111b"
+}
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+animations {
+    off
+}
+
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+spawn-sh-at-startup "regreet; niri msg action quit --skip-confirmation"

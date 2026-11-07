@@ -39,6 +39,7 @@ PanelWindow {
                     text: modelData.is_active ? "●" : "○"
                     textColor: modelData.is_urgent ? Theme.red
                              : (modelData.is_active || modelData.is_focused) ? Theme.accent : Theme.subtext
+                    clickable: true
                     onLeftClicked: Niri.focusWorkspace(modelData)
                 }
             }
@@ -61,6 +62,7 @@ PanelWindow {
         plain: true
         bold: true
         text: Qt.formatDateTime(clock.date, "ddd dd MMM  HH:mm")
+        clickable: true
         onLeftClicked: calendar.toggle()
     }
     CalendarPopup { id: calendar; anchorItem: clockPill }
@@ -105,6 +107,7 @@ PanelWindow {
                         MouseArea {
                             anchors.fill: parent
                             acceptedButtons: Qt.LeftButton | Qt.RightButton | Qt.MiddleButton
+                            cursorShape: Qt.PointingHandCursor
                             onClicked: m => {
                                 const it = trayItem.modelData
                                 if (m.button === Qt.MiddleButton) it.secondaryActivate()
@@ -122,6 +125,7 @@ PanelWindow {
             anchors.verticalCenter: parent.verticalCenter
             visible: Niri.layoutNames.length > 1
             text: Niri.layoutShort
+            clickable: true
             onLeftClicked: Niri.switchLayout()
         }
 
@@ -141,6 +145,7 @@ PanelWindow {
                 : (headphones ? "󰋋" : ["󰕿", "󰖀", "󰕾"][Math.min(2, Math.floor(level * 3))])
                   + " " + Math.round(level * 100) + "%"
             textColor: ready && sink.audio.muted ? Theme.subtext : Theme.text
+            clickable: true
             onLeftClicked: bar.sh("pavucontrol")
             onRightClicked: if (ready) sink.audio.muted = !sink.audio.muted
             onScrolled: dir => { if (ready) sink.audio.volume = Math.max(0, Math.min(1, Math.round((level + dir * 0.05) * 20) / 20)) }
@@ -160,6 +165,7 @@ PanelWindow {
             text: SysStatus.netKind === "wifi" ? "󰖩 " + SysStatus.ssid
                 : SysStatus.netKind === "ethernet" ? "󰈀 wired" : "󰖪 offline"
             textColor: SysStatus.netKind === "offline" ? Theme.subtext : Theme.text
+            clickable: true
             onLeftClicked: Popups.toggleWifi(bar.screen)
             onRightClicked: bar.sh("iwctl station wlan0 scan")
         }
@@ -191,6 +197,7 @@ PanelWindow {
         Pill {
             anchors.verticalCenter: parent.verticalCenter
             text: SysStatus.notifDnd ? "󰂛" : "󰂚"
+            clickable: true
             onLeftClicked: bar.sh("swaync-client -t -sw")
             onRightClicked: bar.sh("swaync-client -d -sw")
             Text {
@@ -206,6 +213,7 @@ PanelWindow {
             anchors.verticalCenter: parent.verticalCenter
             text: "󰐥"
             textColor: Theme.red
+            clickable: true
             onLeftClicked: bar.sh(Theme.scripts + "/power-menu.sh")
         }
     }

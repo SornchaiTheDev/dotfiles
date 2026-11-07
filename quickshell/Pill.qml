@@ -8,6 +8,7 @@ Rectangle {
     property color textColor: Theme.text
     property bool bold: false
     property bool plain: false              // no background (workspaces, title)
+    property bool clickable: false          // show the hand cursor
     default property alias content: row.data
 
     signal leftClicked()
@@ -36,6 +37,7 @@ Rectangle {
     MouseArea {
         anchors.fill: parent
         acceptedButtons: Qt.LeftButton | Qt.RightButton | Qt.MiddleButton
+        cursorShape: pill.clickable ? Qt.PointingHandCursor : Qt.ArrowCursor
         property real acc: 0                 // touchpads send tiny deltas; add them up
         onClicked: m => m.button === Qt.RightButton ? pill.rightClicked()
                       : m.button === Qt.MiddleButton ? pill.middleClicked() : pill.leftClicked()

@@ -65,7 +65,7 @@ PopupWindow {
                         x: modelData.dir < 0 ? 4 : parent.width - width - 4
                         text: modelData.glyph; color: Theme.subtext
                         font { family: Theme.font; pixelSize: 16 }
-                        MouseArea { anchors.fill: parent; anchors.margins: -6; onClicked: cal.shift(parent.modelData.dir) }
+                        MouseArea { anchors.fill: parent; anchors.margins: -6; cursorShape: Qt.PointingHandCursor; onClicked: cal.shift(parent.modelData.dir) }
                     }
                 }
             }

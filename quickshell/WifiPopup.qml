@@ -9,6 +9,7 @@ Scope {
     readonly property bool open: Popups.current === "wifi"
     property bool powered: true
     property var networks: []        // [{connected, ssid, sec, dbm, known}]
+    property var pendingNetworks: null   // update held back while the list is being dragged
     property bool scanning: false
     property string busySsid: ""
     property string expanded: ""
@@ -38,8 +39,16 @@ Scope {
                             dbm: parseInt(f[4]), known: f[5] === "1" })
         }
         nets.sort((a, b) => (b.connected - a.connected) || (b.known - a.known) || (b.dbm - a.dbm))
-        networks = nets
+        setNetworks(nets)
         if (wasOff && powered && open) rescan()
+    }
+    // Only touch the model when something changed, and never mid-drag:
+    // replacing it resets the ListView and makes it jump.
+    function setNetworks(nets) {
+        if (JSON.stringify(nets) === JSON.stringify(networks)) { pendingNetworks = null; return }
+        if (netList.moving || netList.dragging) { pendingNetworks = nets; return }
+        pendingNetworks = null
+        networks = nets
     }
     function activate(net) {
         if (net.connected || busySsid !== "") return
@@ -115,13 +124,18 @@ Scope {
         }
 
         ListView {
+            id: netList
             width: parent.width
-            height: Math.min(contentHeight, 380)
+            // exact height from the rows (46px + 2px spacing; expanded row +44px) —
+            // ListView's own contentHeight is an estimate that shifts while overscrolling
+            height: Math.min(root.networks.length * 48 - 2 + (root.expanded !== "" ? 44 : 0), 380)
+            onMovementEnded: if (root.pendingNetworks) root.setNetworks(root.pendingNetworks)
             visible: root.powered && root.networks.length > 0
             clip: true
             spacing: 2
-            boundsBehavior: Flickable.StopAtBounds
             model: root.networks
+
+            SmoothScroll { flick: netList }
 
             delegate: Rectangle {
                 id: row
@@ -133,7 +147,7 @@ Scope {
                 radius: 10
                 clip: true
                 color: modelData.connected ? Theme.accentBg
-                     : (rowArea.containsMouse || isExpanded) ? Theme.overlay : "transparent"
+                     : ((rowArea.containsMouse && !ListView.view.moving) || isExpanded) ? Theme.overlay : "transparent"
                 Behavior on height { NumberAnimation { duration: 150; easing.type: Easing.OutCubic } }
 
                 MouseArea {

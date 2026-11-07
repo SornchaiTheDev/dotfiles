@@ -191,12 +191,14 @@ Scope {
         }
 
         Flickable {
+            id: devFlick
             width: parent.width
             height: Math.min(contentHeight, 420)
             visible: root.enabled
             contentHeight: lists.implicitHeight
             clip: true
-            boundsBehavior: Flickable.StopAtBounds
+
+            SmoothScroll { flick: devFlick }
 
             Column {
                 id: lists

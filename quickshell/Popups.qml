@@ -2,14 +2,15 @@ pragma Singleton
 import QtQuick
 import Quickshell
 
-// Which popups are open, and on which screen.
+// Which popup is open ("" = none), and on which screen. Only one at a time.
 Singleton {
-    property bool wifiOpen: false
-    property var wifiScreen: null
+    property string current: ""
+    property var screen: null
 
-    function toggleWifi(screen) {
-        if (wifiOpen) { wifiOpen = false; return }
-        wifiScreen = screen
-        wifiOpen = true
+    function toggle(name, scr) {
+        if (current === name) { current = ""; return }
+        screen = scr
+        current = name
     }
+    function close() { current = "" }
 }

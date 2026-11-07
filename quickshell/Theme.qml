@@ -6,7 +6,7 @@ import Quickshell
 Singleton {
     readonly property color barBg:    "#d911111b"   // rgba(17,17,27,0.85)
     readonly property color surface:  "#1e1e2e"
-    readonly property color card:     "#f21e1e2e"
+    readonly property color card:     "#fc1e1e2e"
     readonly property color mantle:   "#181825"
     readonly property color overlay:  "#313244"
     readonly property color border:   "#45475a"

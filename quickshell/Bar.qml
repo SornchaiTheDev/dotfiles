@@ -166,7 +166,7 @@ PanelWindow {
                 : SysStatus.netKind === "ethernet" ? "󰈀 wired" : "󰖪 offline"
             textColor: SysStatus.netKind === "offline" ? Theme.subtext : Theme.text
             clickable: true
-            onLeftClicked: Popups.toggleWifi(bar.screen)
+            onLeftClicked: Popups.toggle("wifi", bar.screen)
             onRightClicked: bar.sh("iwctl station wlan0 scan")
         }
 
@@ -178,6 +178,9 @@ PanelWindow {
             visible: adapter !== null
             text: !adapter || !adapter.enabled ? "󰂲" : connected > 0 ? "󰂱 " + connected : "󰂯"
             textColor: adapter && adapter.enabled ? Theme.text : Theme.subtext
+            clickable: true
+            onLeftClicked: Popups.toggle("bluetooth", bar.screen)
+            onRightClicked: if (adapter) adapter.enabled = !adapter.enabled
         }
 
         // battery

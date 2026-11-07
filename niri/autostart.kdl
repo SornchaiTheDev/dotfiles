@@ -4,7 +4,6 @@ spawn-at-startup "qs"
 spawn-at-startup "swaync"
 spawn-at-startup "vicinae" "server"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-spawn-at-startup "nm-applet" "--indicator"
 
 // Wallpaper: set one with  ~/.config/niri/scripts/wallpaper.sh /path/to/image
 spawn-sh-at-startup "awww-daemon & sleep 0.5; ~/.config/niri/scripts/wallpaper.sh --restore"

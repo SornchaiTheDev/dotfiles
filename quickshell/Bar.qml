@@ -74,12 +74,17 @@ PanelWindow {
 
         // tray
         Pill {
+            id: trayPill
             anchors.verticalCenter: parent.verticalCenter
-            visible: SystemTray.items.values.length > 0
+            // tray icons we never want to see (matched against the item id, lowercase)
+            readonly property var ignored: ["vicinae"]
+            readonly property var items: SystemTray.items.values
+                .filter(it => !ignored.includes((it.id || "").toLowerCase()))
+            visible: items.length > 0
             Row {
                 spacing: 8
                 Repeater {
-                    model: SystemTray.items
+                    model: trayPill.items
                     Item {
                         id: trayItem
                         required property SystemTrayItem modelData

@@ -4,7 +4,6 @@
 !/README.md
 !/quickshell/
 !/niri/
-!/waybar/
 
 # niri's automatic config backups
 /niri/*.backup*

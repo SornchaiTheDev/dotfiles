@@ -161,7 +161,6 @@ PanelWindow {
                 : SysStatus.netKind === "ethernet" ? "󰈀 wired" : "󰖪 offline"
             textColor: SysStatus.netKind === "offline" ? Theme.subtext : Theme.text
             onLeftClicked: Popups.toggleWifi(bar.screen)
-            onMiddleClicked: bar.sh("~/.config/waybar/wifi-menu.sh")
             onRightClicked: bar.sh("iwctl station wlan0 scan")
         }
 

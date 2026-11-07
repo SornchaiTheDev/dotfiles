@@ -2,7 +2,7 @@ pragma Singleton
 import QtQuick
 import Quickshell
 
-// Catppuccin Mocha — same palette the waybar style used.
+// Catppuccin Mocha palette.
 Singleton {
     readonly property color barBg:    "#d911111b"   // rgba(17,17,27,0.85)
     readonly property color surface:  "#1e1e2e"
@@ -23,7 +23,7 @@ Singleton {
     readonly property string font: "JetBrainsMono Nerd Font"
     readonly property int fontSize: 13
 
-    // bar geometry (matches the old waybar config)
+    // bar geometry
     readonly property int barHeight: 34
     readonly property int barMargin: 6
     readonly property int barSide: 8

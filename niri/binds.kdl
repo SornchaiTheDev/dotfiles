@@ -9,7 +9,7 @@ binds {
     Mod+E hotkey-overlay-title="Files: Nautilus" { spawn "nautilus"; }
     Mod+R repeat=false hotkey-overlay-title="Launcher: vicinae" { spawn "vicinae" "toggle"; }
     Mod+N repeat=false hotkey-overlay-title="Notification center" { spawn "swaync-client" "-t" "-sw"; }
-    Mod+Shift+B hotkey-overlay-title="Restart Waybar" { spawn-sh "pkill -x waybar; waybar"; }
+    Mod+Shift+B hotkey-overlay-title="Restart Quickshell" { spawn-sh "pkill -x qs; qs"; }
     Super+Alt+L hotkey-overlay-title="Lock screen" { spawn "swaylock" "-f"; }
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
     Mod+P repeat=false hotkey-overlay-title="Mirror laptop screen" { spawn-sh "wl-mirror eDP-1"; }

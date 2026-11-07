@@ -1,6 +1,6 @@
 # Desktop config (niri + quickshell)
 
-Tracked: `quickshell/` (bar + Wi-Fi popup), `niri/`, `waybar/` (old bar, kept for fallback).
+Tracked: `quickshell/` (bar + Wi-Fi popup) and `niri/`.
 Everything else in ~/.config is ignored on purpose (see .gitignore).
 
 ## Rollback
@@ -11,6 +11,4 @@ Everything else in ~/.config is ignored on purpose (see .gitignore).
 
 Quickshell hot-reloads on file changes. After changing niri files: `niri msg action load-config-file`.
 
-## Switch back to waybar
-In niri/autostart.kdl uncomment `spawn-at-startup "waybar"` and remove `spawn-at-startup "qs"`, then:
-    pkill -x qs; setsid -f waybar
+Restart the bar: Mod+Shift+B, or `pkill -x qs; setsid -f qs`.

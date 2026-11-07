@@ -5,7 +5,7 @@ set -euo pipefail
 SRC="$(cd "$(dirname "$0")" && pwd)"
 
 echo "==> Installing packages"
-pacman -S --needed --noconfirm waybar swaylock swayidle playerctl polkit-gnome \
+pacman -S --needed --noconfirm quickshell swaylock swayidle playerctl polkit-gnome \
     gnome-keyring greetd-regreet noto-fonts-emoji
 
 echo "==> Installing greeter config"
